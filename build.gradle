@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.wychesterso.transit'
 version = '0.0.1-SNAPSHOT'
-description = 'GTFS-Static data loader'
+description = 'GTFS-static data loader'
 
 java {
 	toolchain {
@@ -42,6 +42,18 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.register('runLoader', JavaExec) {
+	group = 'application'
+	description = 'Runs the GTFS-static data loader without starting web server'
+
+	mainClass.set('com.wychesterso.transit.seq_transit_static_loader.StaticLoaderRunner')
+	classpath = sourceSets.main.get().runtimeClasspath
+
+	environment 'SPRING_DATASOURCE_URL', System.getenv('SPRING_DATASOURCE_URL')
+	environment 'SPRING_DATASOURCE_USERNAME', System.getenv('SPRING_DATASOURCE_USERNAME')
+	environment 'SPRING_DATASOURCE_PASSWORD', System.getenv('SPRING_DATASOURCE_PASSWORD')
 }
 
 tasks.named('test') {
