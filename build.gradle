@@ -49,7 +49,7 @@ tasks.register('runLoader', JavaExec) {
 	description = 'Runs the GTFS-static data loader without starting web server'
 
 	mainClass.set('com.wychesterso.transit.seq_transit_static_loader.StaticLoaderRunner')
-	classpath = sourceSets.main.get().runtimeClasspath
+	classpath = sourceSets.main.runtimeClasspath
 
 	environment 'SPRING_DATASOURCE_URL', System.getenv('SPRING_DATASOURCE_URL')
 	environment 'SPRING_DATASOURCE_USERNAME', System.getenv('SPRING_DATASOURCE_USERNAME')
