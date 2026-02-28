@@ -10,7 +10,7 @@ It can also be triggered manually using the **workflow_dispatch** option.
 
 ## Overview
 
-<img width="821" height="180" alt="D1" src="https://github.com/user-attachments/assets/d957b1b4-b5b8-4177-a662-4cab885214ae" />
+<img width="820" height="180" alt="D1" src="https://github.com/user-attachments/assets/46ba8477-1f67-4d82-b10f-0f12c1e07483" />
 
 Within the SEQ Transit pipeline, `seq-transit-static-loader` is responsible for:
 
@@ -19,6 +19,12 @@ Within the SEQ Transit pipeline, `seq-transit-static-loader` is responsible for:
 - Truncating existing schedule tables prior to load
 - Loading each GTFS file into PostgreSQL using bulk `COPY` operations
 - Ensuring the database contains data on services for the upcoming day
+
+---
+
+## Data Source
+
+Static GTFS data is sourced from: **[https://gtfsrt.api.translink.com.au/GTFS/SEQ_GTFS.zip](https://gtfsrt.api.translink.com.au/GTFS/SEQ_GTFS.zip)**
 
 ---
 
@@ -33,26 +39,6 @@ Within the SEQ Transit pipeline, `seq-transit-static-loader` is responsible for:
 
 ---
 
-## Environment Variables
-
-Required configuration:
-
-```bash
-SPRING_DATASOURCE_URL=
-SPRING_DATASOURCE_USERNAME=
-SPRING_DATASOURCE_PASSWORD=
-```
-
----
-
-## Data Source
-
-Static GTFS data is sourced from **[https://gtfsrt.api.translink.com.au/GTFS/SEQ_GTFS.zip](https://gtfsrt.api.translink.com.au/GTFS/SEQ_GTFS.zip)**
-
-Only publicly available transit schedule data is consumed.
-
----
-
 ## Database Schema
 
 Database schema management is handled by **Liquibase**.
@@ -63,3 +49,15 @@ On an empty database, Liquibase:
 - Initializes indexes to assist with performance
 
 This ensures the ingestion pipeline can assume a fully prepared schema before performing bulk loads.
+
+---
+
+## Environment Variables
+
+Required configuration:
+
+```bash
+SPRING_DATASOURCE_URL=
+SPRING_DATASOURCE_USERNAME=
+SPRING_DATASOURCE_PASSWORD=
+```
