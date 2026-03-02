@@ -20,6 +20,10 @@ Within the SEQ Transit pipeline, `seq-transit-static-loader` is responsible for:
 - Loading each GTFS file into PostgreSQL using bulk `COPY` operations
 - Ensuring the database contains data on services for the upcoming day
 
+Companion Projects:
+- [API Server](https://github.com/wychesterso/seq-transit-server)
+- [Mobile App](https://github.com/wychesterso/seq-transit-app)
+
 ---
 
 ## Data Source
